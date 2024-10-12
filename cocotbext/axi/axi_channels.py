@@ -26,38 +26,38 @@ from .stream import define_stream
 
 # Write address channel
 AxiAWBus, AxiAWTransaction, AxiAWSource, AxiAWSink, AxiAWMonitor = define_stream("AxiAW",
-    signals=["awid", "awaddr", "awlen", "awsize", "awburst", "awvalid", "awready"],
-    optional_signals=["awlock", "awcache", "awprot", "awqos", "awregion", "awuser"],
-    signal_widths={"awlen": 8, "awsize": 3, "awburst": 2, "awlock": 1,
+    signals=["awid", "awaddr", "awlen", "awsize", "awburst", "awvalid", "awready", "awprot"],
+    optional_signals=["awlock", "awcache", "awqos", "awregion", "awuser"],
+    signal_widths={"awid": 4, "awlen": 8, "awsize": 3, "awburst": 2, "awlock": 1,
         "awcache": 4, "awprot": 3, "awqos": 4, "awregion": 4}
 )
 
 # Write data channel
 AxiWBus, AxiWTransaction, AxiWSource, AxiWSink, AxiWMonitor = define_stream("AxiW",
-    signals=["wdata", "wlast", "wvalid", "wready"],
-    optional_signals=["wstrb", "wuser"],
+    signals=["wdata", "wlast", "wvalid", "wready", "wstrb"],
+    optional_signals=["wuser"],
     signal_widths={"wlast": 1}
 )
 
 # Write response channel
 AxiBBus, AxiBTransaction, AxiBSource, AxiBSink, AxiBMonitor = define_stream("AxiB",
-    signals=["bid", "bvalid", "bready"],
-    optional_signals=["bresp", "buser"],
+    signals=["bid", "bvalid", "bready", "bresp"],
+    optional_signals=["buser"],
     signal_widths={"bresp": 2}
 )
 
 # Read address channel
 AxiARBus, AxiARTransaction, AxiARSource, AxiARSink, AxiARMonitor = define_stream("AxiAR",
-    signals=["arid", "araddr", "arlen", "arsize", "arburst", "arvalid", "arready"],
-    optional_signals=["arlock", "arcache", "arprot", "arqos", "arregion", "aruser"],
+    signals=["arid", "araddr", "arlen", "arsize", "arburst", "arvalid", "arready", "arprot"],
+    optional_signals=["arlock", "arcache", "arqos", "arregion", "aruser"],
     signal_widths={"arlen": 8, "arsize": 3, "arburst": 2, "arlock": 1,
         "arcache": 4, "arprot": 3, "arqos": 4, "arregion": 4}
 )
 
 # Read data channel
 AxiRBus, AxiRTransaction, AxiRSource, AxiRSink, AxiRMonitor = define_stream("AxiR",
-    signals=["rid", "rdata", "rlast", "rvalid", "rready"],
-    optional_signals=["rresp", "ruser"],
+    signals=["rid", "rdata", "rlast", "rvalid", "rready", "rresp"],
+    optional_signals=["ruser"],
     signal_widths={"rresp": 2, "rlast": 1}
 )
 

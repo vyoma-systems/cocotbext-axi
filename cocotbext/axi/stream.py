@@ -109,12 +109,14 @@ class StreamBase(Reset):
             if self._ready_init is not None:
                 self.ready.setimmediatevalue(self._ready_init)
 
+        self.log.debug(f'valid {self._valid_signal}')
         if self._valid_signal is not None and hasattr(self.bus, self._valid_signal):
             self.valid = getattr(self.bus, self._valid_signal)
             if self._valid_init is not None:
                 self.valid.setimmediatevalue(self._valid_init)
 
         for sig in self._signals+self._optional_signals:
+            self.log.debug(f'sig {sig}')
             if hasattr(self.bus, sig):
                 if sig in self._signal_widths:
                     assert len(getattr(self.bus, sig)) == self._signal_widths[sig]

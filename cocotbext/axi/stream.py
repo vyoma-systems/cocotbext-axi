@@ -206,7 +206,7 @@ class StreamPause:
 
 class StreamSource(StreamBase, StreamPause):
 
-    _init_x = True
+    _init_x = False
 
     _valid_init = 0
     _ready_init = None
